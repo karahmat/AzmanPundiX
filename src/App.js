@@ -1,24 +1,29 @@
 import { useState, useEffect } from 'react';
 import Web3 from 'web3';
+import AzmanNFT from './contracts/abi/AzmanNFT.json';
+import KhairulFT from './contracts/abi/KhairulFT.json';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import AzmanNFT from './contracts/abi/AzmanNFT.json';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LinearProgress from '@mui/material/LinearProgress';
 import TableResult from './components/TableResult';
+import KhairulSection from './components/KhairulSection';
 
 
 function App() {
   const [account, setAccount] = useState();
-  const [contractInstance, setContractInstance] = useState();
-  const [totalNFT, setTotalNFT] = useState(0);
+  const [contractInstance, setContractInstance] = useState();  
+  const [totalNFT, setTotalNFT] = useState(0);  
   const [pauseState, setPauseState] = useState();
   const [tokens, setTokens] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [contractInstance2, setContractInstance2] = useState();
+  const [totalKHA, setTotalKHA] = useState(0);  
+  const [loading2, setLoading2] = useState(false);
 
   async function loadWeb3() {
 
@@ -68,9 +73,33 @@ function App() {
     }
   }
 
+  // Token address: 0xB40521dF65c19ABd1cCca33B180915743Efee6e4
+  async function loadKhairulFT() {   
+
+    const web3 = window.web3;
+
+    if(KhairulFT) {
+      setLoading2(true);
+      const abi = KhairulFT.abi;      
+      const address = KhairulFT.contractAddress;            
+      const contract = new web3.eth.Contract(abi, address);              
+      setContractInstance2(contract);          
+      const totalSupply = await contract.methods.totalSupply().call();
+      console.log('total supply', totalSupply);
+      setLoading2(false);
+      setTotalKHA(totalSupply);    
+      
+    } else {
+      window.alert('Smart contract for KHA not deployed to detected network.')
+    }
+  }
+
+  
+
   useEffect(() => {
     loadWeb3();
     loadBlockchainData();
+    loadKhairulFT();
   }, [toggle]);
   
   const handleMint = async() => {
@@ -117,6 +146,14 @@ function App() {
         { loading && <LinearProgress /> }
         { tokens.length > 0 && <TableResult tokensProp={tokens} handleDelete={handleDelete} /> }
         { totalNFT && <Typography sx={{marginTop: '10px', fontSize: '1.5rem'}}>My total NFT is: {totalNFT} </Typography>}
+        <KhairulSection 
+          account={account} 
+          contractInstance2={contractInstance2} 
+          totalKHA={totalKHA} 
+          setLoading2={setLoading2}
+          loading2={loading2}
+          loadKhairulFT={loadKhairulFT} 
+        />
       </Container>      
       
       <Footer />
