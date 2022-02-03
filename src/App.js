@@ -74,11 +74,9 @@ function App() {
   
   const handleMint = async() => {
     try {            
-      setLoading(true);
       contractInstance.methods.safeMint(account).send({ from: account })
       .then(() => {
         setToggle(!toggle);
-        setLoading(false);
       });      
       // const totalSupply = await contractInstance.methods.totalSupply().call();
       // setTotalNFT(totalSupply);   
