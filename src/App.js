@@ -73,7 +73,7 @@ function App() {
     }
   }
 
-  // Token address: 0xB40521dF65c19ABd1cCca33B180915743Efee6e4
+  // Token address: 0x3D69D89953ED1BBB9839573C360a7259E31968d1
   async function loadKhairulFT() {   
 
     const web3 = window.web3;
