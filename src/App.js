@@ -35,7 +35,7 @@ function App() {
     }
   }
 
-  // Smart Contract Address: 0xcB20DF505f3f15C6570A9001d5b693eF50480174
+  // Smart Contract Address: 0xc0103402cc0EE45c7DCD19fF69A185ef9184e62b
   async function loadBlockchainData() {
     const web3 = window.web3;
     // Load account
