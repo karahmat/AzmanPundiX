@@ -1,6 +1,6 @@
 {
-    "contractName": "Azman",
-    "contractAddress": "0xcB20DF505f3f15C6570A9001d5b693eF50480174",
+    "contractName": "Azman",    
+    "contractAddress": "0xc0103402cc0EE45c7DCD19fF69A185ef9184e62b",
     "contractNetwork": "rinkeby",
     "abi": [
         {

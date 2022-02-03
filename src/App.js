@@ -14,7 +14,7 @@ import TableResult from './components/TableResult';
 function App() {
   const [account, setAccount] = useState();
   const [contractInstance, setContractInstance] = useState();
-  const [totalNFT, setTotalNFT] = useState();
+  const [totalNFT, setTotalNFT] = useState(0);
   const [pauseState, setPauseState] = useState();
   const [tokens, setTokens] = useState([]);
   const [toggle, setToggle] = useState(false);
@@ -45,6 +45,7 @@ function App() {
     if(AzmanNFT) {
       const abi = AzmanNFT.abi;
       const address = AzmanNFT.contractAddress;
+      console.log(address);
       const contract = new web3.eth.Contract(abi, address);  
       setContractInstance(contract);    
       const totalSupply = await contract.methods.totalSupply().call();
