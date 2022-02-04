@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This repository is a simple React application that implements ERC721 and ERC20 smart contracts
+This repository is a simple React application that implements ERC721 and ERC20 smart contracts. To ensure that these contracts comply with the ERC721 and ERC20 standards, I made use of the OpenZeppelin library. 
 
 ## ERC721 Smart Contract
 
-The Solidity file is here `/src/contracts/Azman.sol`. It creates a non-fungible token called Azman (KAZ) (i.e., my name). Each KAZ has a unique token ID and has the following features:
+The Solidity file is here `/src/contracts/Azman.sol`. It creates a non-fungible token called Azman (KAR) (i.e., my name). Each KAR has a unique token ID and has the following features:
 
-- Autoincrement of the token ID every time a new KAZ is created
+- Autoincrement of the token ID every time a new KAR is created
 - mint function
 - pause function (to pause the smart contract) (Note: not implemented in the UI)
 - burn function
