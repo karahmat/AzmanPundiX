@@ -1,5 +1,5 @@
 {   
-    "contractAddress": "0x3D69D89953ED1BBB9839573C360a7259E31968d1",
+    "contractAddress": "0x27323521CdC2Cac2054d0A9E4503eb63442F34D2",
     "abi": [
         {
             "inputs": [],
@@ -140,6 +140,24 @@
                 }
             ],
             "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "burn",
+            "outputs": [],
+            "stateMutability": "nonpayable",
             "type": "function"
         },
         {
@@ -361,3 +379,6 @@
         }
     ]
 }
+
+
+

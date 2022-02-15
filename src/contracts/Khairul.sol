@@ -11,6 +11,6 @@ contract Khairul is ERC20Capped, Ownable {
     }
 
     function mint(address to, uint256 amount) public onlyOwner {
-        ERC20._mint(to, amount);
+        ERC20Capped._mint(to, amount);
     }
 }

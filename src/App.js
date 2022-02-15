@@ -24,6 +24,7 @@ function App() {
   const [contractInstance2, setContractInstance2] = useState();
   const [totalKHA, setTotalKHA] = useState(0);  
   const [loading2, setLoading2] = useState(false);
+  const [cappedAmtState, setCappedAmtState] = useState();
 
   async function loadWeb3() {
 
@@ -73,7 +74,8 @@ function App() {
     }
   }
 
-  // Token address: 0x3D69D89953ED1BBB9839573C360a7259E31968d1
+  // Old Token address: 0x3D69D89953ED1BBB9839573C360a7259E31968d1
+  // New Token address: 0xfe600B7806585f46384Ecea33c8fF67aA7D9A050
   async function loadKhairulFT() {   
 
     const web3 = window.web3;
@@ -85,6 +87,8 @@ function App() {
       const contract = new web3.eth.Contract(abi, address);              
       setContractInstance2(contract);          
       const totalSupply = await contract.methods.totalSupply().call();
+      const cappedAmt = await contract.methods.cap().call();
+      setCappedAmtState(cappedAmt);
       console.log('total supply', totalSupply);
       setLoading2(false);
       setTotalKHA(totalSupply);    
@@ -153,6 +157,7 @@ function App() {
           setLoading2={setLoading2}
           loading2={loading2}
           loadKhairulFT={loadKhairulFT} 
+          cappedAmtState={cappedAmtState}
         />
       </Container>      
       
